@@ -9,8 +9,16 @@ import { createAuthRouter } from "./routes/auth";
 import { createDeviceRouter } from "./routes/devices";
 
 async function main() {
-  await mongoose.connect(config.mongodbUri);
-  console.log("Connected to MongoDB");
+  try {
+    await mongoose.connect(config.mongodbUri, {
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+    });
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("MongoDB connection failed:", (err as Error).message);
+    process.exit(1);
+  }
 
   const app = express();
   const server = http.createServer(app);
