@@ -1,0 +1,24 @@
+export enum ErrorCode {
+  INVALID_CREDENTIALS = "INVALID_CREDENTIALS",
+  INVALID_SIGNATURE = "INVALID_SIGNATURE",
+  SESSION_NOT_FOUND = "SESSION_NOT_FOUND",
+  SESSION_ALREADY_APPROVED = "SESSION_ALREADY_APPROVED",
+  SESSION_EXPIRED = "SESSION_EXPIRED",
+  DEVICE_REVOKED = "DEVICE_REVOKED",
+  CHALLENGE_EXPIRED = "CHALLENGE_EXPIRED",
+  INVALID_REFRESH_TOKEN = "INVALID_REFRESH_TOKEN",
+  DEVICE_NOT_FOUND = "DEVICE_NOT_FOUND",
+  VALIDATION_ERROR = "VALIDATION_ERROR",
+  UNAUTHORIZED = "UNAUTHORIZED",
+}
+
+export class AppError extends Error {
+  constructor(
+    public code: ErrorCode,
+    public statusCode: number,
+    message: string
+  ) {
+    super(message);
+    this.name = "AppError";
+  }
+}
