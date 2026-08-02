@@ -29,8 +29,6 @@ async function main() {
     },
   });
 
-  app.set("io", io);
-
   app.use(cors());
   app.use(express.json());
 

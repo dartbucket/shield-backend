@@ -24,7 +24,7 @@ import {
 } from "../validators";
 import { Server as SocketIOServer } from "socket.io";
 
-export function createAuthRouter(_io: SocketIOServer): Router {
+export function createAuthRouter(io: SocketIOServer): Router {
   const router = Router();
 
   router.post(
@@ -299,7 +299,6 @@ export function createAuthRouter(_io: SocketIOServer): Router {
       refreshSession.tokenHash = hashToken(refreshToken);
       await refreshSession.save();
 
-      const io: SocketIOServer = req.app.get("io");
       io.to(session.socketId).emit("oob.approved", {
         event: "oob.approved",
         accessToken,
@@ -338,7 +337,6 @@ export function createAuthRouter(_io: SocketIOServer): Router {
       session.approvingDeviceId = device._id;
       await session.save();
 
-      const io: SocketIOServer = req.app.get("io");
       io.to(session.socketId).emit("oob.declined", {
         event: "oob.declined",
       });
