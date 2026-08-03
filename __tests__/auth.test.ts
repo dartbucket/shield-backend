@@ -31,8 +31,11 @@ describe("POST /auth/signup", () => {
 
     expect(res.body.accessToken).toBeDefined();
     expect(res.body.refreshToken).toBeDefined();
-    expect(res.body.userId).toBeDefined();
-    expect(res.body.deviceId).toBeDefined();
+    expect(res.body.user).toBeDefined();
+    expect(res.body.user.email).toBe("test@example.com");
+    expect(res.body.user.passwordHash).toBeUndefined();
+    expect(res.body.device).toBeDefined();
+    expect(res.body.device.platform).toBe("macos");
   });
 
   it("should reject duplicate email", async () => {
@@ -102,6 +105,11 @@ describe("POST /auth/login", () => {
 
     expect(res.body.accessToken).toBeDefined();
     expect(res.body.refreshToken).toBeDefined();
+    expect(res.body.user).toBeDefined();
+    expect(res.body.user.email).toBe("login@example.com");
+    expect(res.body.user.passwordHash).toBeUndefined();
+    expect(res.body.device).toBeDefined();
+    expect(res.body.device.platform).toBe("macos");
   });
 
   it("should reject invalid password", async () => {

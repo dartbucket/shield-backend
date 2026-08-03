@@ -32,7 +32,7 @@ describe("Device routes", () => {
       });
 
     accessToken = res.body.accessToken;
-    deviceId = res.body.deviceId;
+    deviceId = res.body.device.id;
   });
 
   describe("GET /devices", () => {

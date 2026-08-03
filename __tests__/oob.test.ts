@@ -86,7 +86,7 @@ describe("OOB authentication flow", () => {
         appVersion: "1.0.0",
       });
 
-    const mobileDeviceId = signupRes.body.deviceId;
+    const mobileDeviceId = signupRes.body.device.id;
 
     // Set the public key on the mobile device
     const { Device } = require("../src/models/Device");
@@ -161,7 +161,7 @@ describe("OOB authentication flow", () => {
         appVersion: "1.0.0",
       });
 
-    const mobileDeviceId = signupRes.body.deviceId;
+    const mobileDeviceId = signupRes.body.device.id;
 
     // 2. Connect socket
     const socket = SocketIOClient(`http://localhost:${port}`, {

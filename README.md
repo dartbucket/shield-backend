@@ -106,8 +106,21 @@ Register a new user and device.
 {
   "accessToken": "eyJ...",
   "refreshToken": "a1b2c3...",
-  "userId": "60f...",
-  "deviceId": "60f..."
+  "user": {
+    "id": "60f...",
+    "email": "user@example.com",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "device": {
+    "id": "60f...",
+    "type": "mobile",
+    "platform": "ios",
+    "deviceName": "My Phone",
+    "appVersion": "1.0.0",
+    "lastSeen": "2024-01-01T00:00:00.000Z",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
 }
 ```
 
@@ -131,8 +144,21 @@ Direct login — creates a new device and returns tokens immediately.
 {
   "accessToken": "eyJ...",
   "refreshToken": "a1b2c3...",
-  "userId": "60f...",
-  "deviceId": "60f..."
+  "user": {
+    "id": "60f...",
+    "email": "user@example.com",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  "device": {
+    "id": "60f...",
+    "type": "desktop",
+    "platform": "macos",
+    "deviceName": "Desktop",
+    "appVersion": "1.0.0",
+    "lastSeen": "2024-01-01T00:00:00.000Z",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
 }
 ```
 

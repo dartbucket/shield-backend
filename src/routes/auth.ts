@@ -70,8 +70,21 @@ export function createAuthRouter(io: SocketIOServer): Router {
       res.status(201).json({
         accessToken,
         refreshToken,
-        userId: user._id,
-        deviceId: device._id,
+        user: {
+          id: user._id,
+          email: user.email,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        },
+        device: {
+          id: device._id,
+          type: device.type,
+          platform: device.platform,
+          deviceName: device.deviceName,
+          appVersion: device.appVersion,
+          lastSeen: device.lastSeen,
+          createdAt: device.createdAt,
+        },
       });
     })
   );
@@ -123,8 +136,21 @@ export function createAuthRouter(io: SocketIOServer): Router {
       res.json({
         accessToken,
         refreshToken,
-        userId: user._id,
-        deviceId: device._id,
+        user: {
+          id: user._id,
+          email: user.email,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        },
+        device: {
+          id: device._id,
+          type: device.type,
+          platform: device.platform,
+          deviceName: device.deviceName,
+          appVersion: device.appVersion,
+          lastSeen: device.lastSeen,
+          createdAt: device.createdAt,
+        },
       });
     })
   );
