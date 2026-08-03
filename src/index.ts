@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import { Server as SocketIOServer } from "socket.io";
 import { config } from "./config";
 import { errorHandler } from "./middleware/errorHandler";
+import { requestLogger } from "./middleware/requestLogger";
 import { createAuthRouter } from "./routes/auth";
 import { createDeviceRouter } from "./routes/devices";
 
@@ -31,6 +32,10 @@ async function main() {
 
   app.use(cors());
   app.use(express.json());
+
+  if (process.env.NODE_ENV !== "production") {
+    app.use(requestLogger);
+  }
 
   // Socket.IO connection
   io.on("connection", (socket) => {
